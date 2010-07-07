@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Posts: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'application' %>
+</head>
+<body>
+
+
+
+<header>
+<body>
+		<!-- This code displays the messages that show up in green at the top of the page. -->
+		<%- flash.each do |name, msg| -%>
+			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+		<%- end -%>
+		
+		<header>
+			<nav>
+				<div id="nav_top">
+					<!-- The contents of this area change depending on whether the user is logged in or not.-->
+					<% if current_user %>
+						<%= link_to current_user.username, edit_user_path(current_user.id) %> | 
+						<%= link_to "Logout", logout_path %>
+					<% else # If the user is not logged in %>
+						<%= link_to "Register", new_user_path %> | 
+						<%= link_to "Login", login_path %>
+					<% end %>
+				</div>
+				
+
+  <span style="float:left" ><%= link_to image_tag("logo.jpg"), root_path %></span>
+				<div id="nav_bottom">
+					<ul>
+						<li><%= link_to "About", :controller => "about" %></li>
+						<li><%= link_to "Home", root_path %></li>
+                                                <li><%= link_to "Posts", posts_path %></li>
+					</ul>
+				</div>
+			
+		</header>
+<br /><br /><br />
+<%= yield %>
+
+</body>
+</html>

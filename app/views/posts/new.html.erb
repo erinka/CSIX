@@ -2,7 +2,7 @@
 
 <% form_for(@post) do |f| %>
   <%= f.error_messages %>
-
+  author = current_user.username
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -11,6 +11,9 @@
     <%= f.label :body %><br />
     <%= f.text_area :body %>
   </p>
+  <p>
+  
+    <%= f.Time.now %>
   <p>
     <%= f.submit 'Create' %>
   </p>
